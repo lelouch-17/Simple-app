@@ -48,7 +48,9 @@ jobs:
             docker tag ${DOCKER_IMAGE} lelouch17/node-app:${{ github.sha }}
         
             # Log in to Docker Hub and push the image
-            echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
+            echo ${DOCKER_PASSWORD} | docker login -u ${DOCKER_USERNAME} --password-stdin
             docker push lelouch17/node-app:${{ github.sha }}
-        
+        env:
+            DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+            DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         
