@@ -10,7 +10,7 @@ RUN npm install
 COPY . .
 
 # Stage 2: Create the final image
-FROM node:18-alpine
+FROM build
 
 WORKDIR /app
 
