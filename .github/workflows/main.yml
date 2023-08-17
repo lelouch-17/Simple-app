@@ -35,13 +35,13 @@ jobs:
       - name: Go Build Cache for Docker
         uses: actions/cache@v3
         with:
-          path: sample-cache
-          key: ${{ runner.os }}-sample-cache-${{ hashFiles('**/package.json') }}
+          path: go-build-cache
+          key: ${{ runner.os }}-go-build-cache-${{ hashFiles('**/go.sum') }}
         
-      - name: inject sample-cache into docker
+      - name: inject go-build-cache into docker
         uses: overmindtech/buildkit-cache-dance/inject@main
         with:
-          cache-source: sample-cache
+          cache-source: go-build-cache
 
       - name: Build and push
         uses: docker/build-push-action@v3
@@ -55,8 +55,8 @@ jobs:
           labels: main
           platforms: linux/amd64
 
-      - name: extract sample-cache from docker
+      - name: extract go-build-cache from docker
         uses: overmindtech/buildkit-cache-dance/extract@main
         with:
-          cache-source: sample-cache
+          cache-source: go-build-cache
 
