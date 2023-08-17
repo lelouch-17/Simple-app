@@ -45,6 +45,3 @@ jobs:
             --import-cache type=local,src=${BUILD_CACHE} \
             --output type=docker,name=${DOCKER_IMAGE} | docker load
           echo "Cache size: $(du -sh ${BUILD_CACHE})"
-
-      - name: Launch a container based on the new image (example)
-        run: ./bin/docker run --rm ${DOCKER_IMAGE} ...
