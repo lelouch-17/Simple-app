@@ -2,7 +2,7 @@ name: CI pipeline
 
 on:
   push:
-    branches: ['main']
+    branches: ['dummy']
 
 defaults:
   run:
@@ -46,8 +46,5 @@ jobs:
       - name: Push Docker image to repository
         run: |
             echo ${{ secrets.PASSWORD }} | docker login -u ${{ secrets.USERNAME }} --password-stdin
-            docker push lelouch17/node-app:${{ github.sha }}S
-        env:
-            DOCKER_USERNAME: ${{ secrets.USERNAME }}
-            DOCKER_PASSWORD: ${{ secrets.PASSWORD }}
+            docker push lelouch17/node-app:${{ github.sha }}
         
