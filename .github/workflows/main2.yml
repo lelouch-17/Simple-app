@@ -49,6 +49,7 @@ jobs:
             --export-cache type=local,dest=${BUILD_CACHE},mode=max \
             --import-cache type=local,src=${BUILD_CACHE} \
             --output type=docker,name=${DOCKER_IMAGE} | docker load
-             docker push lelouch17/node-app:${{ github.sha }}
+            docker tag ${DOCKER_IMAGE} lelouch17/node-app:${{ github.sha }}
+            docker push lelouch17/node-app:${{ github.sha }}
             
          
