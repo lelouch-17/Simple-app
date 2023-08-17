@@ -51,7 +51,7 @@ jobs:
           cache-to: type=gha,mode=max
           file: ./Dockerfile
           push: true
-          tags: ${{ github.sha }}
+          tags: lelouch17/node-app:${{ github.sha }}
           labels: main
           platforms: linux/amd64
 
